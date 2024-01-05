@@ -1,5 +1,5 @@
 <template>
-  <base-card>
+  <BaseCard>
     <h2>Find Your Coach</h2>
     <span class="filter-option">
       <input type="checkbox" id="frontend" checked @change="setFilter" />
@@ -13,7 +13,7 @@
       <input type="checkbox" id="career" checked @change="setFilter" />
       <label for="career">Career</label>
     </span>
-  </base-card>
+  </BaseCard>
 </template>
 
 
@@ -28,8 +28,6 @@
     },
     methods: {
       setFilter(e) {
-        // const inputId = e.target.id
-        // const isActive = e.target.checked
         const updatedFilters = {
           ...this.filters,
           [e.target.id]: e.target.checked
