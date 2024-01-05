@@ -26,45 +26,45 @@
 
 
 <script>
-    import CoachItem from '../../components/coaches/CoachItem.vue'
-    import CoachFilter from '../../components/coaches/CoachFilter.vue'
+import CoachItem from '../../components/coaches/CoachItem.vue'
+import CoachFilter from '../../components/coaches/CoachFilter.vue'
 
-    export default {
-        components: { CoachItem, CoachFilter },
-        data() {
-            return {
-                activeFilters: { frontend: true, backend: true, career: true }
-            }
+export default {
+    components: { CoachItem, CoachFilter },
+    data() {
+        return {
+            activeFilters: { frontend: true, backend: true, career: true }
+        }
+    },
+    computed: {
+        filterCoaches() {
+            const coaches = this.$store.getters['coaches/coaches']
+            return coaches.filter(coach => {
+                if (this.activeFilters.frontend && coach.areas.includes('frontend')) {
+                    return true
+                }
+                if (this.activeFilters.backend && coach.areas.includes('backend')) {
+                    return true
+                }
+                if (this.activeFilters.career && coach.areas.includes('career')) {
+                    return true
+                }
+                return false
+            })
         },
-        computed: {
-            filterCoaches() {
-                const coaches = this.$store.getters['coaches/coaches']
-                return coaches.filter(coach => {
-                    if (this.activeFilters.frontend && coach.areas.includes('frontend')) {
-                        return true
-                    }
-                    if (this.activeFilters.backend && coach.areas.includes('backend')) {
-                        return true
-                    }
-                    if (this.activeFilters.career && coach.areas.includes('career')) {
-                        return true
-                    }
-                    return false
-                })
-            },
-            hasCoaches() {
-                return this.$store.getters['coaches/hasCoaches']
-            },
-            isCoach() {
-                return this.$store.getters['coaches/isCoach']
-            }
+        hasCoaches() {
+            return this.$store.getters['coaches/hasCoaches']
         },
-        methods: {
-            setFilters(updatedFilters) {
-                this.activeFilters = updatedFilters
-            }
+        isCoach() {
+            return this.$store.getters['coaches/isCoach']
+        }
+    },
+    methods: {
+        setFilters(updatedFilters) {
+            this.activeFilters = updatedFilters
         }
     }
+}
 </script>
 
 
