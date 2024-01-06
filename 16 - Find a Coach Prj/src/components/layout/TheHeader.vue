@@ -2,19 +2,46 @@
   <header>
     <nav>
       <h1>
-        <router-link to="/">Find a Coach</router-link>
+        <RouterLink to="/">Find a Coach</RouterLink>
       </h1>
       <ul>
         <li>
-          <router-link to="/coaches">All Coaches</router-link>
+          <RouterLink to="/coaches">All Coaches</RouterLink>
         </li>
-        <li>
-          <router-link to="/requests">Requests</router-link>
+        <li v-if="isLoggedIn">
+          <RouterLink to="/requests">Requests</RouterLink>
+        </li>
+        <li v-else>
+          <RouterLink to="/auth">Login</RouterLink>
+        </li>
+        <li v-if="isLoggedIn">
+          <BaseButton @click="logout">Logout</BaseButton>
         </li>
       </ul>
     </nav>
   </header>
 </template>
+
+
+
+<script>
+import { RouterLink } from 'vue-router';
+
+export default {
+  components: { RouterLink },
+    computed: {
+        isLoggedIn() {
+            return this.$store.getters.isAuthed;
+        }
+    },
+    methods: {
+      logout() {
+        this.$store.dispatch('logout')
+        this.$router.replace('/coaches')
+      }
+    }
+}
+</script>
 
 
 
@@ -37,7 +64,7 @@
   }
     a:active,
     a:hover,
-    a.router-link-active {
+    a.RouterLink-active {
       border: 1px solid #f391e3;
     }
 
@@ -48,7 +75,7 @@
       }
       h1 a:hover,
       h1 a:active,
-      h1 a.router-link-active {
+      h1 a.RouterLink-active {
         border-color: transparent;
       }
 
