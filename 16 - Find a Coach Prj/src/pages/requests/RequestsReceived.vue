@@ -1,13 +1,17 @@
 <template>
+  <div>
+    <BaseDialog :show="!!error" title="An error occurred!" @close="handleError">
+      <p>{{ error }}</p>
+    </BaseDialog>
     <section>
       <BaseCard>
         <header>
             <h2>Requests Received</h2>
         </header>
+        <BaseSpinner v-if="isLoading"></BaseSpinner>
         <ul v-if="hasRequests">
-            <RequestItem
+            <RequestItem :key="req.id"
                 v-for="req in receivedRequests"
-                :key="req.id"
                 :email="req.userEmail"
                 :message="req.message"
             />
@@ -15,6 +19,7 @@
         <h3 v-else>You haven't received any requests yet!</h3>
       </BaseCard>
     </section>
+  </div>
 </template>
   
 
@@ -23,15 +28,39 @@
 import RequestItem from '../../components/requests/RequestItem.vue';
   
 export default {
-    components: { RequestItem },
-    computed: {
-      receivedRequests() {
-        return this.$store.getters['requests/requests']
-      },
-      hasRequests() {
-        return this.$store.getters['requests/hasRequests']
-      }
+  components: { RequestItem },
+  data() {
+    return {
+      isLoading: false,
+      error: null
     }
+  },
+  computed: {
+    receivedRequests() {
+      return this.$store.getters['requests/requests']
+    },
+    hasRequests() {
+      return this.$store.getters['requests/hasRequests']
+    }
+  },
+  created() {
+    this.loadRequests()
+  },
+  methods: {
+    async loadRequests() {
+      this.isLoading = true
+      try {
+        await this.$store.dispatch('requests/fetchRequests')
+      }
+      catch (error) {
+        this.error = error.message || 'Something failed!'
+      }
+      this.isLoading = false
+    },
+    handleError() {
+      this.error = null
+    }
+  }
 }
 </script>
   
