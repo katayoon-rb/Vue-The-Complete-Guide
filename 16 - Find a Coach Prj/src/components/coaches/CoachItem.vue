@@ -5,8 +5,7 @@
     <div>
       <BaseBadge :key="area"
         v-for="area in areas"
-        :type="area"
-        :title="area"
+        :type="area" :title="area"
       />
     </div>
     <div class="actions">
