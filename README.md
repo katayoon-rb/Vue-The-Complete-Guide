@@ -1,12 +1,12 @@
-# Vue.js 2 - The Complete Guide Course
+# Vue.js - The Complete Guide Course
 
-Welcome to the Vue.js 2 - The Complete Guide Course! 🚀
+Welcome to the Vue.js - The Complete Guide Course! 🚀
 
-This repository contains essential information and resources for the "Vue.js 2 - The Complete Guide" course available on Udemy. If you're excited to master Vue.js and build modern, reactive web applications, you're in the right place! 📚💻
+This repository contains essential information and resources for the "Vue.js - The Complete Guide" course available on Udemy. If you're excited to master Vue.js and build modern, reactive web applications, you're in the right place! 📚💻
 
 ## Course Overview 📋
 
-- **Course Name**: Vue.js 2 - The Complete Guide
+- **Course Name**: Vue.js - The Complete Guide
 - **Instructor**: [Maximilian Schwarzmüller](https://www.udemy.com/user/maximilian-schwarzmuller/)
 - **Platform**: Udemy
 - **Enrollment Link**: [Course Link](https://www.udemy.com/course/vuejs-2-the-complete-guide/)
@@ -61,7 +61,7 @@ Each section includes assignments and exercises to reinforce your learning. Make
 
 ## Good Luck and Happy Coding with Vue.js! 🤞📚
 
-We wish you a successful journey through the Vue.js 2 - The Complete Guide Course. Harness the power of Vue.js and build amazing web applications! 💪👨‍💻
+We wish you a successful journey through the Vue.js - The Complete Guide Course. Harness the power of Vue.js and build amazing web applications! 💪👨‍💻
 
 
 
